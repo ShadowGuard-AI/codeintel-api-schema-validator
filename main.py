@@ -65,6 +65,16 @@ def load_data(file_path: str, file_type: Optional[str] = None) -> dict:
         raise
 
 def validate_data(data: dict, schema: dict) -> None:
+    # jsonschema treats unknown keywords as annotations, so an OpenAPI
+    # document passed as the schema would pass almost any data: it has
+    # no top level type or properties for this validator to check
+    # against. Name that mistake instead of printing a false success.
+    if isinstance(schema, dict) and ("openapi" in schema or "swagger" in schema):
+        raise ValueError(
+            "Schema file looks like an OpenAPI document. This tool takes "
+            "a plain JSON Schema; pass the schema object itself, for "
+            "example the entry under components/schemas in that document."
+        )
     """
     Validates the data against the schema.
 
@@ -124,18 +134,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Example usage:
-# 1.  Create sample data and schema files:
-#     - data.json:  {"name": "John Doe", "age": 30}
-#     - schema.json: {"type": "object", "properties": {"name": {"type": "string"}, "age": {"type": "integer"}}, "required": ["name", "age"]}
-# 2.  Run the validator:
-#     python main.py data.json schema.json
-#
-# 3. For YAML:
-#     - data.yaml: name: John Doe\nage: 30
-#     - schema.yaml: type: object\nproperties:\n  name:\n    type: string\n  age:\n    type: integer\nrequired: [name, age]
-#     python main.py data.yaml schema.yaml
-#
-# 4.  Error handling:
-#     - Modify data.json to have a string for age: {"name": "John Doe", "age": "30"}
-#     - Run the validator again to see the validation error.

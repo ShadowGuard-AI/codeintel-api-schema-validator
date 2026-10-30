@@ -1,7 +1,7 @@
 ![Banner](banner.png)
 
 # codeintel-API-Schema-Validator
-Validates API request and response structures against OpenAPI or other schema definitions. - Focused on Tools for static code analysis, vulnerability scanning, and code quality assurance
+Validates API request and response structures against a JSON Schema definition. An OpenAPI document is rejected with an explanation; pass the JSON Schema object itself instead. - Focused on Tools for static code analysis, vulnerability scanning, and code quality assurance
 
 ## Install
 `git clone https://github.com/ShadowStrikeHQ/codeintel-api-schema-validator`
