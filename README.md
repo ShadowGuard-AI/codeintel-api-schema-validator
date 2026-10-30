@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # codeintel-API-Schema-Validator
 Validates API request and response structures against OpenAPI or other schema definitions. - Focused on Tools for static code analysis, vulnerability scanning, and code quality assurance
 
