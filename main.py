@@ -41,6 +41,9 @@ def load_data(file_path: str, file_type: Optional[str] = None) -> dict:
         raise FileNotFoundError(f"File not found: {file_path}")
 
     if file_type is None:
+        # I take the text after the last dot, so a file with no extension
+        # hands me its whole name as the type and falls into the unsupported
+        # branch below. A flag always beats this guess when it is given.
         file_type = file_path.split('.')[-1].lower()
 
     try:
@@ -48,6 +51,9 @@ def load_data(file_path: str, file_type: Optional[str] = None) -> dict:
             if file_type == 'json':
                 return json.load(f)
             elif file_type == 'yaml' or file_type == 'yml':
+                # I let YAML values through as they parse. A plain yes or 1.10 in
+                # the data file reaches the schema check already converted, which
+                # can change what a strict string or number rule does with it.
                 return yaml.safe_load(f)
             else:
                 raise ValueError(f"Unsupported file type: {file_type}.  Must be json or yaml/yml.")
@@ -110,6 +116,9 @@ def main():
     logging.getLogger().setLevel(args.log_level)
 
     try:
+        # I load the data first on purpose. If both files are broken, the
+        # error the user sees names the data file, and the schema file is
+        # never opened until the data at least parses.
         data = load_data(args.data_file, args.data_type)
         schema = load_data(args.schema_file, args.schema_type)
         validate_data(data, schema)
