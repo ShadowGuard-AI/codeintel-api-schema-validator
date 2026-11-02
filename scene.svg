@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="The trench in three depths: silt motes drift and settle in far black water, an anglerfish crosses slowly in the middle depth with its lure swinging in a shallow arc and its glow brightening on the turn while tube worms sway a fraction in its wash, and one large tube worm cluster in the near foreground opens and closes its bone white tips slowly, then holds">
+<rect x="0" y="0" width="1200" height="300" fill="#0b1026"/>
+<g fill="#8a8f98">
+<circle cx="180" cy="30" r="3"><animate attributeName="cy" values="30;120;150" keyTimes="0;0.8;1" dur="24s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0.5;0.15" dur="24s" repeatCount="indefinite"/></circle>
+<circle cx="520" cy="10" r="2"><animate attributeName="cy" values="10;96;120" keyTimes="0;0.8;1" dur="30s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.45;0.12" dur="30s" repeatCount="indefinite"/></circle>
+<circle cx="860" cy="44" r="3"><animate attributeName="cy" values="44;130;152" keyTimes="0;0.8;1" dur="27s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0.5;0.15" dur="27s" repeatCount="indefinite"/></circle>
+<circle cx="1060" cy="16" r="2"><animate attributeName="cy" values="16;104;126" keyTimes="0;0.8;1" dur="33s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.4;0.1" dur="33s" repeatCount="indefinite"/></circle>
+</g>
+<rect x="0" y="252" width="1200" height="48" fill="#0e1119"/>
+<g>
+<animateTransform attributeName="transform" type="translate" values="-60 0;560 0;-60 0" keyTimes="0;0.5;1" dur="44s" repeatCount="indefinite"/>
+<ellipse cx="300" cy="168" rx="150" ry="44" fill="#141a2c"/>
+<polygon points="168,162 104,132 112,168 104,206 168,182" fill="#111625"/>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="-7 452 128;7 452 128;-7 452 128" dur="6s" repeatCount="indefinite"/>
+<path d="M428 140 Q452 108 478 104" stroke="#3c382f" stroke-width="6" fill="none"/>
+<circle cx="484" cy="102" r="26" fill="#e8b33d"><animate attributeName="r" values="24;28;24" keyTimes="0;0.5;1" dur="22s" repeatCount="indefinite"/></circle>
+<circle cx="484" cy="102" r="44" fill="#e8b33d" opacity="0.16"><animate attributeName="opacity" values="0.12;0.24;0.12" keyTimes="0;0.5;1" dur="22s" repeatCount="indefinite"/></circle>
+</g>
+<g fill="#d8d2bd"><polygon points="392,196 398,208 404,196"/><polygon points="410,198 416,210 422,198"/><polygon points="428,198 434,210 440,198"/></g>
+</g>
+<g stroke="#76746c" stroke-width="4">
+<g><animateTransform attributeName="transform" type="rotate" values="0 700 254;-3 700 254;0 700 254" dur="9s" repeatCount="indefinite"/><line x1="688" y1="254" x2="690" y2="226"/><line x1="702" y1="254" x2="704" y2="224"/><line x1="716" y1="254" x2="717" y2="228"/></g>
+</g>
+<g fill="#f2ecd9"><ellipse cx="690" cy="222" rx="7" ry="5"/><ellipse cx="704" cy="220" rx="7" ry="5"/><ellipse cx="717" cy="224" rx="7" ry="5"/></g>
+<g stroke="#8a8578" stroke-width="6"><line x1="96" y1="300" x2="100" y2="252"/><line x1="122" y1="300" x2="124" y2="248"/><line x1="148" y1="300" x2="146" y2="254"/></g>
+<g fill="#f2ecd9">
+<ellipse cx="100" cy="248" rx="10" ry="7"><animate attributeName="rx" values="10;4;10;10" keyTimes="0;0.35;0.7;1" dur="12s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="124" cy="244" rx="10" ry="7"><animate attributeName="rx" values="10;4;10;10" keyTimes="0;0.35;0.7;1" dur="12s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="146" cy="250" rx="10" ry="7"><animate attributeName="rx" values="10;4;10;10" keyTimes="0;0.35;0.7;1" dur="12s" repeatCount="indefinite"/></ellipse>
+</g>
+</svg>
