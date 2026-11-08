@@ -3,97 +3,98 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>codeintel-api-schema-validator: One Data File Against One Schema</title>
-<meta name="description" content="Validates API request and response structures against a JSON Schema definition. An OpenAPI document is rejected with an explanation; pass the JSON Schema object itself instead.">
+<title>codeintel-api-schema-validator: The Pattern Shop</title>
 <style>
-@font-face{font-family:'Bangers';src:url('fonts/Bangers.ttf') format('truetype');}
-@font-face{font-family:'Bitter';src:url('fonts/Bitter.ttf') format('truetype');}
-:root{--abyss:#0b1026;--deep:#05070f;--plate:#171e3d;--gold:#e8b33d;--silt:#8a8f98;--bone:#f2ecd9;--soft:#c9c4ae}
-*{box-sizing:border-box}body{margin:0;background:var(--deep);color:var(--soft);font-family:'Bitter',serif;line-height:1.65}
-h1,h2,h3{font-family:'Bangers',cursive;color:var(--bone);letter-spacing:.04em;font-weight:400}
-.hero{background:linear-gradient(180deg,var(--abyss),var(--deep) 88%)}.hero img.heroimg{width:100%;height:54vh;object-fit:cover;display:block}
-.hero .in,main,footer{max-width:1120px;margin:0 auto;padding:1rem 6vw 2rem}.logo{width:210px;background:var(--abyss)}
-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0}
-.btn{display:inline-block;text-decoration:none;font-family:'Bangers',cursive;font-size:1.1rem;color:var(--bone);background:radial-gradient(circle at 50% 32%,#3a3f2a,var(--plate) 78%);border:2px solid #4a4436;border-radius:50% 50% 46% 46%/58% 58% 42% 42%;padding:1rem 1.5rem .85rem;text-align:center;transition:background .15s}
-.btn:hover{background:radial-gradient(circle at 50% 32%,#7a6428,var(--plate) 80%)}
-.btn:active{transform:translateY(3px)}
-.btn:focus-visible{outline:3px double var(--silt);outline-offset:4px}
-a{color:var(--bone)}a::before{content:'';display:inline-block;width:16px;height:14px;margin-right:.5em;border-left:2px solid var(--silt);border-bottom:2px solid var(--silt);transform:rotate(-38deg);vertical-align:0}
-a:hover{color:var(--gold)}a:hover::before{border-color:var(--gold)}
-.btn::before{content:none}
-.plate{background:var(--plate);border:1px solid var(--silt);padding:.4rem 1.5rem 1.3rem;margin:1.8rem 0;position:relative}
-.plate .notch{position:absolute;top:.9rem;left:-9px;width:16px;height:16px;border-radius:50%;background:var(--gold);border:2px solid var(--deep)}
-pre{background:#05070f;color:var(--bone);padding:1rem;overflow-x:auto;border-left:4px solid var(--gold)}
-.bubbles{height:26px;margin:1.6rem 0;background:radial-gradient(circle at 14px 13px,transparent 5px,var(--silt) 6px,transparent 7px);background-size:130px 26px;opacity:.65}
-.callout{background:#232838;border:1px solid var(--silt);border-top:8px solid var(--silt);padding:.2rem 1.3rem 1rem;margin:1.3rem 0}
-.fail{color:var(--gold)}
-.entry{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(242,236,217,.2)}.entry b{font-family:'Bangers',cursive;font-weight:400;min-width:130px;font-size:1.08rem;color:var(--bone)}
-table{border-collapse:collapse}td,th{padding:.4rem .8rem;border-bottom:1px solid rgba(242,236,217,.2);text-align:left}
+@font-face { font-family: "Ruslan Display"; src: url("fonts/RuslanDisplay-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Piazzolla"; src: url("fonts/Piazzolla-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Piazzolla"; src: url("fonts/Piazzolla-700.woff2") format("woff2"); font-weight: 700; }
+:root {
+  --paper: #f7f1e6; --cream: #eee3d0; --ink: #33291f; --soft: #6f6151;
+  --accent: #5e3226; --deep: #8a5a1f; --line: #dccdb2; --card: #ffffff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Piazzolla", serif; line-height: 1.55; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+header.hero { text-align: center; padding: 52px 0 8px; }
+img.hero-logo { width: min(430px, 82vw); border-radius: 10px; box-shadow: 0 10px 34px rgba(40,32,24,.22); }
+h1, h2 { font-family: "Ruslan Display", serif; line-height: 1.15; }
+h1 { font-size: clamp(26px, 5vw, 44px); margin: 26px 0 6px; }
+.tagline { color: var(--soft); font-size: 19px; margin: 0 auto; max-width: 680px; }
+.btns { margin: 22px 0 6px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+a.btn { font-family: "Ruslan Display", serif; text-decoration: none; padding: 11px 22px; border-radius: 999px; border: 2px solid var(--accent); color: var(--accent); background: transparent; }
+a.btn.solid { background: var(--deep); border-color: var(--deep); color: #fff; }
+figure { margin: 30px 0; }
+figure img { width: 100%; border-radius: 10px; display: block; box-shadow: 0 8px 28px rgba(40,32,24,.18); }
+figcaption { color: var(--soft); font-size: 15px; text-align: center; margin-top: 9px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 34px 0; }
+.fact { background: var(--card); border: 1px solid var(--line); border-top: 5px solid var(--accent); border-radius: 8px; padding: 14px 16px; }
+.fact b { display: block; font-family: "Ruslan Display", serif; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+section { margin: 38px 0; }
+h2 { font-size: 27px; margin: 0 0 12px; border-bottom: 2px solid var(--line); padding-bottom: 7px; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+pre { background: #2b2019; color: #f3ecdd; padding: 15px 18px; border-radius: 8px; overflow-x: auto; font-size: 14.5px; }
+table { border-collapse: collapse; width: 100%; background: var(--card); }
+th, td { border: 1px solid var(--line); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { font-family: "Ruslan Display", serif; background: var(--cream); }
+.hold { background: #faf0e2; border: 1px solid #e4cdaa; border-left: 6px solid var(--accent); border-radius: 8px; padding: 16px 20px; }
+.hold h2 { border: none; padding: 0; }
+.hold ul { margin: 8px 0 4px; padding-left: 20px; }
+footer { margin-top: 52px; border-top: 2px solid var(--line); padding-top: 16px; color: var(--soft); font-size: 14.5px; text-align: center; }
 </style>
 </head>
 <body>
+<div class="wrap">
 <header class="hero">
-<img class="heroimg" src="assets/intro-banner.png" alt="A lure bulb huge and close in black water, gold against abyss indigo, its stalk arcing away below the frame, silt motes in its radiance, tube worm clusters at the rim of the light, no lettering anywhere">
-<div class="in">
-<img class="logo" src="assets/logo.png" alt="One gold anglerfish lure sphere on a short curved stalk over abyss indigo, dim tube worm clusters at the trench floor, and the name codeintel-api-schema-validator in Bangers in bone white underneath">
-<h1>codeintel-api-schema-validator</h1>
-<p>A sounding line lowered over sunless ground. One data file enters, one schema file enters, and the single light in the water decides whether the shape belongs.</p>
-<nav>
-<a class="btn" href="#work">Validate This Data</a>
-<a class="btn" href="#params">Load This Schema</a>
-<a class="btn" href="#params">Set the Logging Level</a>
-<a class="btn" href="#params">Show Help</a>
-</nav>
-</div>
+
+  <h1>codeintel-api-schema-validator</h1>
+  <p class="tagline">The Pattern Shop. A command line validator that loads one data document and judges it against one JSON Schema, and refuses the judging entirely when the schema handed to it is an OpenAPI document rather than a plain JSON Schema.</p>
+  <div class="btns">
+    <a class="btn solid" href="https://github.com/ShadowGuard-AI/codeintel-api-schema-validator">The repository</a>
+    <a class="btn" href="https://github.com/ShadowGuard-AI/codeintel-api-schema-validator/blob/main/main.py">main.py</a>
+  </div>
 </header>
-<main>
-<section class="plate" id="work"><span class="notch"></span><h2>One Data File Against One Schema</h2>
-<p>codeintel-api-schema-validator validates API request and response structures against a JSON Schema definition. An OpenAPI document is rejected with an explanation; pass the JSON Schema object itself instead.</p>
-<div class="callout"><h3>A Field, Not a Behaviour</h3>
-<p>Focused on tools for static code analysis, vulnerability scanning, and code quality assurance.</p>
-<p>That closing sentence is carried over from the README and is flagged here as a general line: it names a field rather than a behaviour of this program. One data file enters, one schema file enters, and its behaviour unfolds upon the plates that follow this one.</p></div>
+<figure>
+  <img src="assets/intro-banner.png" alt="The grey iron casting and its pine pattern close up edge to edge on the bench, the patternmaker's hand at the frame edge and the pattern racks soft behind">
+  <figcaption>Piece against master, edge to edge.</figcaption>
+</figure>
+
+<div class="facts">
+  <div class="fact"><b>Input</b>Two required positionals, loaded in order: a data file, then a schema file</div>
+  <div class="fact"><b>Judgement</b>A single jsonschema validate call against the one schema handed to it</div>
+  <div class="fact"><b>Success</b>Prints Validation successful! and exits 0</div>
+  <div class="fact"><b>Failure</b>A violation raises the single best matching error and exits 1, as do a missing file and an invalid schema</div>
+</div>
+<section>
+  <h2>Usage</h2>
+  <pre>python3 main.py DATA_FILE SCHEMA_FILE [--data_type json|yaml] [--schema_type json|yaml] [--log_level LEVEL]</pre>
+  <p>The data and schema types are inferred from the file extensions when the flags are omitted, and the log level defaults to INFO. The two files load in order, so when both are broken the error names the data file.</p>
+<table>
+    <tr><th>Option</th><th>What it does</th></tr>
+    <tr><td><code>DATA_FILE</code></td><td>The one document to judge.</td></tr>
+    <tr><td><code>SCHEMA_FILE</code></td><td>The one JSON Schema to judge it against.</td></tr>
+    <tr><td><code>--data_type / --schema_type</code></td><td>json or yaml; inferred from the file extension when omitted.</td></tr>
+    <tr><td><code>--log_level</code></td><td>Logging level. The default is INFO.</td></tr>
+  </table>
 </section>
-<div class="bubbles"></div>
-<section class="plate"><span class="notch"></span><h2>Getting the Code, One Clone Line</h2>
-<pre>git clone https://github.com/ShadowGuard-AI/codeintel-api-schema-validator</pre>
-<p>The solitary install line, rendered plainly and carrying no fault callout, since the organisation name within that address is written correctly, hyphen included, as ShadowGuard-AI. The README supplies no change of directory step, no dependency step, and no launch instruction, and none is appended here.</p>
+<figure>
+  <img src="assets/banner.png" alt="A foundry pattern shop with tall racks of varnished wooden patterns, a patternmaker holding a grey iron casting beside the pine pattern it was cast from, a single white chalk line across the workbench">
+  <figcaption>The pattern shop: every casting tried against the master it was made from.</figcaption>
+</figure>
+<section class="hold">
+  <h2>The refusal at the centre</h2>
+  <ul>
+    <li>A schema document carrying a top level openapi or swagger key is rejected with exit 1 and the instruction to pass a plain JSON Schema instead, for example the entry under components/schemas in the OpenAPI document.</li>
+    <li>The refusal exists because jsonschema would otherwise treat the OpenAPI document's unknown keywords as annotations and pass almost anything.</li>
+    <li>The repository's own GitHub description claims validation against OpenAPI or other schema definitions. The code does the opposite, and this site states the code's behaviour.</li>
+  </ul>
 </section>
-<div class="bubbles"></div>
-<section class="plate" id="usage"><span class="notch"></span><h2>The Usage Line as Printed</h2>
-<pre>python3 main.py DATA_FILE SCHEMA_FILE [--data_type json|yaml] [--schema_type json|yaml] [--log_level LEVEL]</pre>
-<p>On this occasion the printed line is the true line, set large. main.py, the entry point named here, occurs inside the usage itself, the two positional files lead in sequence, data file before schema file, and the three bracketed options trail them. Nothing upon this plate warrants a mismatch warning: a correct usage line merits acknowledgement in a fleet where so many stand as placeholders.</p>
-<h2>OpenAPI Is Turned Away</h2>
-<p>A schema file containing an openapi or swagger key is refused at the threshold rather than confused for a schema. The tool judges data against the schema supplied, and refuses an entire category of document, the OpenAPI document, outright.</p>
+<section>
+  <h2>Requirements</h2>
+  <p>Python with jsonschema 4.17.0 or later and PyYAML 6.0 or later.</p>
 </section>
-<div class="bubbles"></div>
-<section class="plate" id="params"><span class="notch"></span><h2>Six Entries on the Line</h2>
-<div class="entry"><b>-h</b><span>Shows the help message and exits.</span></div>
-<div class="entry"><b>data_file</b><span>The path to the API request or response data file, in JSON or YAML. Required.</span></div>
-<div class="entry"><b>schema_file</b><span>Required likewise. Its entry unfolds in two movements, set out in the callout below.</span></div>
-<div class="entry"><b>--data_type</b><span>Specifies the data file type, json or yaml, inferred from the extension if omitted.</span></div>
-<div class="entry"><b>--schema_type</b><span>Specifies the schema file type, json or yaml, inferred from the extension if omitted.</span></div>
-<div class="entry"><b>--log_level</b><span>Sets the logging level, with choices DEBUG, INFO, WARNING, ERROR, and CRITICAL, and a default of INFO.</span></div>
-<div class="callout"><h3>The README Calls It OpenAPI Here</h3>
-<p>The README wording, as printed: Path to the OpenAPI or schema definition file (JSON or YAML).</p>
-<p>Correction inferred from the README's own opening and from verified behaviour: an OpenAPI document is not accepted here and a plain JSON Schema must be passed instead.</p></div>
-</section>
-<div class="bubbles"></div>
-<section class="plate"><span class="notch"></span><h2>Three Verified Outcomes</h2>
-<p>Valid data against a matching schema exits 0.</p>
-<p>Data that violates the schema exits 1 with the validation failure.</p>
-<p class="fail">A schema file containing an openapi or swagger key is rejected with exit 1 and the message that a plain JSON Schema must be passed instead.</p>
-<p>The boundary those outcomes establish jointly: the tool judges data against the schema supplied, and refuses an entire category of document at the threshold.</p>
-<p><a href="https://github.com/ShadowGuard-AI/codeintel-api-schema-validator">The repository on GitHub</a></p>
-</section>
-<div class="bubbles"></div>
-<section class="plate"><span class="notch"></span><h2>Licence, the Closing Entry</h2>
-<pre>See LICENSE</pre>
-<p>The licence line exactly as the README prints it, presented plainly. The README names no licence within its own text and directs the reader toward the separate LICENSE file.</p>
-</section>
-</main>
 <footer>
-<img src="assets/banner.png" alt="An anglerfish entire in profile crossing the midnight zone, lure swaying ahead of its teeth, its gold pool falling on tube worm clusters, and the name scored into the trench wall" style="width:100%">
-<p>codeintel-api-schema-validator. Trench hushed, lure glow lowered, no shape left unjudged inside the pool.</p>
+<p>The clone URL of codeintel-api-schema-validator names the current ShadowGuard-AI org, and its licence line reads See LICENSE; the repository carries a LICENSE file headed MIT License. Site type is set in Ruslan Display and Piazzolla, self-hosted under the SIL Open Font License.</p>
 </footer>
+</div>
 </body>
 </html>
