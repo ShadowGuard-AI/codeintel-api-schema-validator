@@ -5,6 +5,8 @@
 
 ![A foundry pattern shop with tall racks of varnished wooden patterns, a patternmaker holding a grey iron casting beside the pine pattern it was cast from, a single white chalk line across the workbench](banner.png)
 
+![A smooth uncut pine pattern blank standing on the pattern shop bench, its plain round centre hole the only feature on its face, chisels, rasps and curled shavings soft around it and the pattern racks blurred behind](logo.png)
+
 ![The trench in three depths: silt motes drift and settle in far black water, an anglerfish crosses slowly in the middle depth with its lure swinging in a shallow arc and its glow brightening on the turn while tube worms sway a fraction, and one large tube worm cluster in the near foreground opens and closes its bone white tips slowly, then holds](scene.svg)
 
 Validates API request and response structures against a JSON Schema definition. An OpenAPI document is rejected with an explanation; pass the JSON Schema object itself instead. Focused on tools for static code analysis, vulnerability scanning, and code quality assurance.
