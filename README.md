@@ -1,11 +1,9 @@
-![The lure bulb huge and close in black water, gold against abyss indigo, its stalk arcing away below the frame, silt motes in its radiance, tube worm clusters at the rim of the light, no lettering anywhere](intro-banner.png)
+![The grey iron casting and its pine pattern close up edge to edge on the bench, the patternmaker's hand at the frame edge and the pattern racks soft behind](intro-banner.png)
 
 
 # codeintel-API-Schema-Validator
 
-![An anglerfish entire in profile crossing the midnight zone, lure swaying ahead of its teeth, its gold pool falling on tube worm clusters on the trench floor, and codeintel-api-schema-validator scored into the trench wall in bone white with a gold shadow](banner.png)
-
-![One gold anglerfish lure sphere on a short curved stalk over abyss indigo, dim tube worm clusters at the trench floor, and the name underneath in bone white, the heading plate](logo.png)
+![A foundry pattern shop with tall racks of varnished wooden patterns, a patternmaker holding a grey iron casting beside the pine pattern it was cast from, a single white chalk line across the workbench](banner.png)
 
 ![The trench in three depths: silt motes drift and settle in far black water, an anglerfish crosses slowly in the middle depth with its lure swinging in a shallow arc and its glow brightening on the turn while tube worms sway a fraction, and one large tube worm cluster in the near foreground opens and closes its bone white tips slowly, then holds](scene.svg)
 
